@@ -3,10 +3,10 @@ package tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl;
 import java.util.List;
 
 
-import tn.edu.esprit.cinfo2.g2.tunipharma.domain.User;
+import tn.edu.esprit.cinfo2.g2.tunipharma.domain.Operator;
 import tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.interfaces.IDaoGenerique;
 
-public class UserDao implements IDaoGenerique<User> {
+public class UserDao implements IDaoGenerique<Operator> {
   public static  UserDao instansof;
 	
   private UserDao(){
@@ -14,25 +14,25 @@ public class UserDao implements IDaoGenerique<User> {
   }
     
     @Override
-	public boolean add(User t) {
+	public boolean add(Operator t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(User t) {
+	public boolean update(Operator t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean remove(User t) {
+	public boolean remove(Operator t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public User findByID(int id) {
+	public Operator findByID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -47,7 +47,7 @@ public class UserDao implements IDaoGenerique<User> {
 	}
 
 	@Override
-	public List<User> findAll() {
+	public List<Operator> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
