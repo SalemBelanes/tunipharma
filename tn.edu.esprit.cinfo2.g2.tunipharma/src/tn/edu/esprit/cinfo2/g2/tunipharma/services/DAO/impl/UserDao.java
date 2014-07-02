@@ -1,7 +1,10 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl;
 
-import tn.edu.esprit.info2.g2.tunipharma.domaine.User;
-import tn.edu.esprit.info2.g2.tunipharma.services.dao.interfaces.IDaoGenerique;
+import java.util.List;
+
+
+import tn.edu.esprit.cinfo2.g2.tunipharma.domain.User;
+import tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.interfaces.IDaoGenerique;
 
 public class UserDao implements IDaoGenerique<User> {
   public static  UserDao instansof;
@@ -41,6 +44,12 @@ public class UserDao implements IDaoGenerique<User> {
 		}
 	
 	return instansof;
+	}
+
+	@Override
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
