@@ -3,10 +3,11 @@ package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 public class Offers {
 	
 private int id;
+private Drug_Store drug_store;
 private String subject;
 private String content;
 private String start_time;
-private Drug_Store drug_store;
+
 
 	public Offers() {
 		// TODO Auto-generated constructor stub

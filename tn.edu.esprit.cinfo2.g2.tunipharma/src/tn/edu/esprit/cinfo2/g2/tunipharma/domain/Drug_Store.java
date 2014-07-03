@@ -1,7 +1,7 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 
 public class Drug_Store {
-	
+
 	private int id;
 	private String name;
 	private String Sector;
@@ -10,24 +10,16 @@ public class Drug_Store {
 	private String telephone;
 	private String email;
 	private String web_site;
-	private Operator operator;
-	
-	
+
 	@Override
 	public String toString() {
 		return "Drug_Store [id=" + id + ", name=" + name + ", Sector=" + Sector
 				+ ", region=" + region + ", adress=" + adress + ", telephone="
 				+ telephone + ", email=" + email + ", web_site=" + web_site
-				+ ", operator=" + operator + "]";
+				+ "]";
 	}
 
-	public Operator getOperator() {
-		return operator;
-	}
 
-	public void setOperator(Operator operator) {
-		this.operator = operator;
-	}
 
 	public Drug_Store() {
 		// TODO Auto-generated constructor stub
@@ -96,11 +88,11 @@ public class Drug_Store {
 	public void setWeb_site(String web_site) {
 		this.web_site = web_site;
 	}
- 
+
+
 
 	public Drug_Store(int id, String name, String sector, String region,
-			String adress, String telephone, String email, String web_site,
-			Operator operator) {
+			String adress, String telephone, String email, String web_site) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -110,8 +102,9 @@ public class Drug_Store {
 		this.telephone = telephone;
 		this.email = email;
 		this.web_site = web_site;
-		this.operator = operator;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -122,8 +115,6 @@ public class Drug_Store {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((operator == null) ? 0 : operator.hashCode());
 		result = prime * result + ((region == null) ? 0 : region.hashCode());
 		result = prime * result
 				+ ((telephone == null) ? 0 : telephone.hashCode());
@@ -162,11 +153,6 @@ public class Drug_Store {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (operator == null) {
-			if (other.operator != null)
-				return false;
-		} else if (!operator.equals(other.operator))
 			return false;
 		if (region == null) {
 			if (other.region != null)
