@@ -1,8 +1,13 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl.DrugStoreDao;
+
 public class Operator {
 	private int id;
-	private Drug_Store drug_store;
+	private DrugStore drug_store;
 	private String firstname;
 	private String lasname;
 	private String login;
@@ -11,6 +16,10 @@ public class Operator {
 
 	public Operator() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Operator(String s) {
+		
 	}
 
 	public String getLasname() {
@@ -62,7 +71,7 @@ public class Operator {
 	}
 
 
-	public Operator(int id, Drug_Store drug_store, String firstname,
+	public Operator(int id, DrugStore drug_store, String firstname,
 			String lasname, String login, String password, String email) {
 		super();
 		this.id = id;
@@ -72,6 +81,13 @@ public class Operator {
 		this.login = login;
 		this.password = password;
 		this.email = email;
+	}
+
+	
+
+	public Operator(ResultSet resultSet) throws SQLException {
+		this.setFirstname(resultSet.getString("firstname"));
+		this.setLasname(resultSet.getString("lasname"));	
 	}
 
 	@Override
@@ -143,11 +159,11 @@ public class Operator {
 		return true;
 	}
 
-	public Drug_Store getDrug_store() {
+	public DrugStore getDrug_store() {
 		return drug_store;
 	}
 
-	public void setDrug_store(Drug_Store drug_store) {
+	public void setDrugstore(DrugStore drug_store) {
 		this.drug_store = drug_store;
 	}
 

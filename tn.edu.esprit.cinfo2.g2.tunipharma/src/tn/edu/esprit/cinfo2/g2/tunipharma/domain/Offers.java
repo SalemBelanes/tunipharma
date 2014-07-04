@@ -3,7 +3,7 @@ package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 public class Offers {
 	
 private int id;
-private Drug_Store drug_store;
+private DrugStore drug_store;
 private String subject;
 private String content;
 private String start_time;
@@ -14,7 +14,7 @@ private String start_time;
 	}
 
 	public Offers(int id, String subject, String content, String start_time,
-			Drug_Store drug_store) {
+			DrugStore drug_store) {
 		super();
 		this.id = id;
 		this.subject = subject;
@@ -25,7 +25,7 @@ private String start_time;
 
 	@Override
 	public String toString() {
-		return "Offers [id=" + id + ", subject=" + subject + ", content="
+		return "OffersDao [id=" + id + ", subject=" + subject + ", content="
 				+ content + ", start_time=" + start_time + ", drug_store="
 				+ drug_store + "]";
 	}
@@ -110,11 +110,11 @@ private String start_time;
 		this.start_time = start_time;
 	}
 
-	public Drug_Store getDrug_store() {
+	public DrugStore getDrug_store() {
 		return drug_store;
 	}
 
-	public void setDrug_store(Drug_Store drug_store) {
+	public void setDrug_store(DrugStore drug_store) {
 		this.drug_store = drug_store;
 	}
 

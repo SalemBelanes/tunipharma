@@ -7,7 +7,7 @@ public class Admin extends Operator{
 		super();
 	}
 
-	public Admin(int id, Drug_Store drug_store, String firstname,
+	public Admin(int id, DrugStore drug_store, String firstname,
 			String lasname, String login, String password, String email) {
 		super(id, drug_store, firstname, lasname, login, password, email);
 		// TODO Auto-generated constructor stub

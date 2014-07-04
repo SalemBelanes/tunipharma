@@ -1,6 +1,8 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 
-public class Drug_Store {
+import java.sql.ResultSet;
+
+public class DrugStore {
 
 	private int id;
 	private String name;
@@ -13,7 +15,7 @@ public class Drug_Store {
 
 	@Override
 	public String toString() {
-		return "Drug_Store [id=" + id + ", name=" + name + ", Sector=" + Sector
+		return "DrugStore [id=" + id + ", name=" + name + ", Sector=" + Sector
 				+ ", region=" + region + ", adress=" + adress + ", telephone="
 				+ telephone + ", email=" + email + ", web_site=" + web_site
 				+ "]";
@@ -21,7 +23,7 @@ public class Drug_Store {
 
 
 
-	public Drug_Store() {
+	public DrugStore() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -91,7 +93,7 @@ public class Drug_Store {
 
 
 
-	public Drug_Store(int id, String name, String sector, String region,
+	public DrugStore(int id, String name, String sector, String region,
 			String adress, String telephone, String email, String web_site) {
 		super();
 		this.id = id;
@@ -102,6 +104,13 @@ public class Drug_Store {
 		this.telephone = telephone;
 		this.email = email;
 		this.web_site = web_site;
+	}
+
+
+
+	public DrugStore(ResultSet resultSet) {
+		
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -131,7 +140,7 @@ public class Drug_Store {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Drug_Store other = (Drug_Store) obj;
+		DrugStore other = (DrugStore) obj;
 		if (Sector == null) {
 			if (other.Sector != null)
 				return false;
