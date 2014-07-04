@@ -1,10 +1,9 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl;
 
-import java.sql.Connection;
 import java.sql.*;
-import java.sql.SQLException;
 import java.util.List;
 
+import tn.edu.esprit.cinfo2.g2.tunipharma.domain.DrugStore;
 import tn.edu.esprit.cinfo2.g2.tunipharma.domain.Operator;
 import tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.interfaces.IDaoGenerique;
 import tn.edu.esprit.cinfo2.g2.tunipharma.utilities.MysqlUtilities;
@@ -114,7 +113,10 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 			    return null;
 			}else{
 				resultSet.first();				
-				operator = new Operator(resultSet);				
+				operator = new Operator(resultSet);	
+				DrugStoreDao drugstordao = DrugStoreDao.getInstanceof();
+				DrugStore drugStore= drugstordao.findByID(resultSet.getInt("drug_store_id"));
+				operator.setDrugstore(drugStore);
 			}		
 
 		} catch (SQLException e) {

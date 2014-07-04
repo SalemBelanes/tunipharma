@@ -11,5 +11,6 @@ public interface IDaoGenerique<obj> {
 	boolean remove(obj t);
 	obj findByID(int id);
 	List<obj> findAll();
+	
 
 }

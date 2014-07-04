@@ -13,6 +13,7 @@ import tn.edu.esprit.cinfo2.g2.tunipharma.utilities.MysqlUtilities;
 
 
 public class DrugStoreDao implements IDaoGenerique<DrugStore> {
+	private static DrugStoreDao drugStoreDao;
 
 	public DrugStoreDao() {
 		// TODO Auto-generated constructor stub
@@ -27,9 +28,13 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 		return null;
 	}
 
-	public static Object getInstanceof() {
-		// TODO Auto-generated method stub
-		return null;
+	public static DrugStoreDao getInstanceof() {
+		if(drugStoreDao== null){
+			drugStoreDao = new DrugStoreDao();
+			
+		}
+		
+		return drugStoreDao;
 	}
 	
 	private Connection connection;
@@ -75,7 +80,7 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 	@Override
 	public DrugStore findByID(int id) {
 		Connection connection = this.getConnection();
-		DrugStore operator = null;
+		DrugStore drugstore = null;
 		try {
 			Statement statement = (Statement) connection.createStatement();
 			String sql = "select * from  operartor where id = " + id;
@@ -85,14 +90,14 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 			    return null;
 			}else{
 				resultSet.first();				
-				operator = new DrugStore(resultSet);				
+				drugstore = new DrugStore(resultSet);				
 			}		
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return operator;
+		return drugstore;
 	}
 
 

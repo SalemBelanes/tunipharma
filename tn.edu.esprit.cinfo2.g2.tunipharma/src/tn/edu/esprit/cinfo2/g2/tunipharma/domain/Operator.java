@@ -87,7 +87,8 @@ public class Operator {
 
 	public Operator(ResultSet resultSet) throws SQLException {
 		this.setFirstname(resultSet.getString("firstname"));
-		this.setLasname(resultSet.getString("lasname"));	
+		this.setLasname(resultSet.getString("lasname"));
+		
 	}
 
 	@Override
