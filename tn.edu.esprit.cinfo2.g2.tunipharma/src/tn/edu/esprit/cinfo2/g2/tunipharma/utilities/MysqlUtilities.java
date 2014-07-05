@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MysqlUtilities {
 	private static Connection myConnection;
-	private static String url = "jdbc:mysql://localhost:3306/tunipharma";
+	private static String url = "jdbc:mysql://localhost:3306/tunipharma?allowMultiQueries=true";
 	private static String user = "root";
 	private static String password = "";
 

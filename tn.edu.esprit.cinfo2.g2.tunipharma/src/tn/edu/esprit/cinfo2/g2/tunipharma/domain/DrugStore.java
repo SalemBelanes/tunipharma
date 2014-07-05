@@ -104,7 +104,8 @@ public class DrugStore {
 	}
 
 	public DrugStore(ResultSet resultSet) throws SQLException {
-
+		
+		this.setId(resultSet.getInt("id"));
 		this.setAdress(resultSet.getString("adress"));
 		this.setEmail(resultSet.getString("email"));
 		this.setName(resultSet.getString("name"));

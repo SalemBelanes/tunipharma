@@ -38,7 +38,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 
 		try {
 			Statement statement = (Statement) connection.createStatement();
-			String sql = "insert into operator (drug_store_id,firsname,lastname,login,password,email) values("
+			String sql = "insert into operator (drug_store_id,firstname,lasname,login,password,email) values("
 					+ "'"
 					+ operator.getDrug_store().getId()
 					+ "',"
@@ -102,30 +102,31 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 
 	@Override
 	public Operator findByID(int id) {
-
 		Connection connection = this.getConnection();
 		Operator operator = null;
 		try {
 			Statement statement = (Statement) connection.createStatement();
-			String sql = "select * from  operartor where id = " + id;
+			String sql = "select * from  operator where id = " + id;
 			ResultSet resultSet = statement.executeQuery(sql);
 			resultSet.last();
-			if (resultSet.getRow() > 0) {
+			if (resultSet.getRow() < 1) {
+				return null;
+			} else {
 				resultSet.first();
 				operator = new Operator(resultSet);
-				DrugStoreDao drugstordao = DrugStoreDao.getInstanceof();
-				DrugStore drugStore = drugstordao.findByID(resultSet
-						.getInt("drug_store_id"));
-				operator.setDrugstore(drugStore);
+				// decalarate DAO for drug store
+				DrugStoreDao drugStoreDao = new DrugStoreDao();
+				DrugStore finddrug = drugStoreDao.findByID(resultSet.getInt("drug_store_id"));
+				operator.setDrugstore(finddrug);
 
 			}
 
 		} catch (SQLException e) {
+			System.out.println("exception");
 			e.printStackTrace();
 		}
 
 		return operator;
-
 	}
 
 	public static OperatorDao getInstanceof() {

@@ -81,6 +81,8 @@ public class Operator {
 	}
 
 	public Operator(ResultSet resultSet) throws SQLException {
+		
+		this.setId(resultSet.getInt("id"));
 		this.setFirstname(resultSet.getString("firstname"));
 		this.setLasname(resultSet.getString("lasname"));
 		this.setEmail(resultSet.getString("email"));
@@ -90,10 +92,12 @@ public class Operator {
 
 	@Override
 	public String toString() {
-		return "Operator [id=" + id + ", drug_store=" + drug_store
+		
+			return   "Operator [id=" + id + ", drug_store=" + (drug_store != null ? drug_store  : "[]")
 				+ ", firstname=" + firstname + ", lasname=" + lasname
 				+ ", login=" + login + ", password=" + password + ", email="
 				+ email + "]";
+			
 	}
 
 	@Override
@@ -164,5 +168,7 @@ public class Operator {
 	public void setDrugstore(DrugStore drug_store) {
 		this.drug_store = drug_store;
 	}
+
+
 
 }

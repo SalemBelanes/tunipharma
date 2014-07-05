@@ -74,29 +74,16 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 		try {
 
 			Statement statement = (Statement) connection.createStatement();
-			String sql = "update drug_store set (name,sector,region,adress,telephone,email,web_site) values("
-					+ "'"
-					+ drugstore.getName()
-					+ "',"
-					+ "'"
-					+ drugstore.getSector()
-					+ "',"
-					+ "'"
-					+ drugstore.getRegion()
-					+ "',"
-					+ "'"
-					+ drugstore.getAdress()
-					+ "',"
-					+ "'"
-					+ drugstore.getTelephone()
-					+ "',"
-					+ "'"
-					+ drugstore.getEmail()
-					+ "',"
-					+ "'"
-					+ drugstore.getWeb_site() + "'"
+			String sql = "update drug_store set name='" + drugstore.getName()
+					+ "' ,sector = '" + drugstore.getSector() + "',region = '"
+					+ drugstore.getRegion() + "',adress ='"
+					+ drugstore.getAdress() + "' ,telephone = '"
+					+ drugstore.getTelephone() + "' ,email = '"
+					+ drugstore.getEmail() + "',web_site ='"
+					+ drugstore.getEmail() + "' ;";
 
-					+ ")";
+			System.out.println(sql);
+
 			statement.executeUpdate(sql);
 
 		} catch (SQLException e) {
@@ -105,20 +92,7 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 		return false;
 	}
 
-	@Override
-	public boolean remove(DrugStore drugStore) {
-		Connection connection = this.getConnection();
-		try {
-			Statement statement = (Statement) connection.createStatement();
-			String sql = "delete from drug_store where id = "
-					+ drugStore.getId();
-			statement.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
-		return false;
-	}
 
 	@Override
 	public DrugStore findByID(int id) {
@@ -134,10 +108,11 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 			} else {
 				resultSet.first();
 				drugstore = new DrugStore(resultSet);
-				
+
 			}
 
 		} catch (SQLException e) {
+			System.out.println("exception");
 			e.printStackTrace();
 		}
 
@@ -156,6 +131,7 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 			while (resultSet.next()) {
 
 				DrugStore drugstore = new DrugStore(resultSet);
+				drugstores.add(drugstore);
 			}
 
 		} catch (SQLException e) {
@@ -172,5 +148,21 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 		}
 
 		return instansof;
+	}
+	
+	@Override
+	public boolean remove(DrugStore drugStore) {
+		Connection connection = this.getConnection();
+		try {
+			Statement statement = (Statement) connection.createStatement();
+			String sql = "delete from drug_store where id = " + drugStore.getId();
+			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+		
 	}
 }
