@@ -28,19 +28,19 @@ public class TestDao {
 
 		DrugStoreDao.add(d);
 
-		DrugStore operatorFinded = DrugStoreDao.findByID(1);
-		operatorFinded.toString();
+		DrugStore drugstoreFinded = DrugStoreDao.findByID(1);
+		drugstoreFinded.toString();
 
-		operatorFinded.setSector("night");
+		drugstoreFinded.setSector("night");
 
 		DrugStoreDao.update(d);
 
-		operatorFinded = DrugStoreDao.findByID(1);
-		operatorFinded.toString();
+		drugstoreFinded = DrugStoreDao.findByID(1);
+		drugstoreFinded.toString();
 
 		DrugStoreDao.remove(d);
 
-		Operator operator = new Operator("");
+		Operator operator = new Operator();
 		operator.setId(1);
 		operator.setFirstname("Salem");
 		operator.setLasname("Belanes");

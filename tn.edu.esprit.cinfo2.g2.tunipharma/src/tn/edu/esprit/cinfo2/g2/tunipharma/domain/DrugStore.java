@@ -1,6 +1,7 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DrugStore {
 
@@ -20,8 +21,6 @@ public class DrugStore {
 				+ telephone + ", email=" + email + ", web_site=" + web_site
 				+ "]";
 	}
-
-
 
 	public DrugStore() {
 		// TODO Auto-generated constructor stub
@@ -91,8 +90,6 @@ public class DrugStore {
 		this.web_site = web_site;
 	}
 
-
-
 	public DrugStore(int id, String name, String sector, String region,
 			String adress, String telephone, String email, String web_site) {
 		super();
@@ -106,14 +103,16 @@ public class DrugStore {
 		this.web_site = web_site;
 	}
 
+	public DrugStore(ResultSet resultSet) throws SQLException {
 
-
-	public DrugStore(ResultSet resultSet) {
-		
-		// TODO Auto-generated constructor stub
+		this.setAdress(resultSet.getString("adress"));
+		this.setEmail(resultSet.getString("email"));
+		this.setName(resultSet.getString("name"));
+		this.setRegion(resultSet.getString("region"));
+		this.setSector(resultSet.getString("sector"));
+		this.setTelephone(resultSet.getString("telephone"));
+		this.setWeb_site(resultSet.getString("web_site"));
 	}
-
-
 
 	@Override
 	public int hashCode() {
