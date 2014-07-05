@@ -3,8 +3,6 @@ package tn.edu.esprit.cinfo2.g2.tunipharma.domain;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl.DrugStoreDao;
-
 public class Operator {
 	private int id;
 	private DrugStore drug_store;
@@ -17,9 +15,9 @@ public class Operator {
 	public Operator() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Operator(String s) {
-		
+
 	}
 
 	public String getLasname() {
@@ -70,7 +68,6 @@ public class Operator {
 		this.password = password;
 	}
 
-
 	public Operator(int id, DrugStore drug_store, String firstname,
 			String lasname, String login, String password, String email) {
 		super();
@@ -83,12 +80,12 @@ public class Operator {
 		this.email = email;
 	}
 
-	
-
 	public Operator(ResultSet resultSet) throws SQLException {
 		this.setFirstname(resultSet.getString("firstname"));
 		this.setLasname(resultSet.getString("lasname"));
-		
+		this.setEmail(resultSet.getString("email"));
+		this.setLogin(resultSet.getString("login"));
+		this.setPassword(resultSet.getString("password"));
 	}
 
 	@Override

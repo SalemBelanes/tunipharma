@@ -1,6 +1,9 @@
 package tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import tn.edu.esprit.cinfo2.g2.tunipharma.domain.DrugStore;
@@ -69,8 +72,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 		try {
 
 			Statement statement = (Statement) connection.createStatement();
-			String sql = "update user set  drug_store_id ='"
-					+ operator.getDrug_store().getId() + "'," + "firstname = '"
+			String sql = "update user set  firstname = '"
 					+ operator.getFirstname() + "'," + "lastname='"
 					+ operator.getLasname() + "'," + "login='"
 					+ operator.getLogin() + "'," + "password="
@@ -101,7 +103,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 
 	@Override
 	public Operator findByID(int id) {
-		
+
 		Connection connection = this.getConnection();
 		Operator operator = null;
 		try {
@@ -109,20 +111,20 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 			String sql = "select * from  operartor where id = " + id;
 			ResultSet resultSet = statement.executeQuery(sql);
 			resultSet.last();
-			if (resultSet.getRow() < 1){
-			    return null;
-			}else{
-				resultSet.first();				
-				operator = new Operator(resultSet);	
+			if (resultSet.getRow() > 0) {
+				resultSet.first();
+				operator = new Operator(resultSet);
 				DrugStoreDao drugstordao = DrugStoreDao.getInstanceof();
-				DrugStore drugStore= drugstordao.findByID(resultSet.getInt("drug_store_id"));
+				DrugStore drugStore = drugstordao.findByID(resultSet
+						.getInt("drug_store_id"));
 				operator.setDrugstore(drugStore);
-			}		
+
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return operator;
 
 	}
@@ -138,8 +140,28 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 
 	@Override
 	public List<Operator> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = this.getConnection();
+		List<Operator> op = new ArrayList<Operator>();
+		try {
+			Statement statement = (Statement) connection.createStatement();
+			String sql = "select * from  operartor ";
+			ResultSet resultSet = statement.executeQuery(sql);
+
+			while (resultSet.next()) {
+				
+				Operator operator = new Operator(resultSet);
+				DrugStoreDao drugstordao = DrugStoreDao.getInstanceof();
+				DrugStore drugStore = drugstordao.findByID(resultSet
+						.getInt("drug_store_id"));
+				operator.setDrugstore(drugStore);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return op;
 	}
 
 }
