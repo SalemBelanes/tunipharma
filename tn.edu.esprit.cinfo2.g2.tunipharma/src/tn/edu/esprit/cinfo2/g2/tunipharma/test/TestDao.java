@@ -14,6 +14,8 @@ public class TestDao {
 	public static void main(String[] args) {
 		OperatorDao OperatorDao = tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl.OperatorDao
 				.getInstanceof();
+		DrugStoreDao DrugStoreDao = tn.edu.esprit.cinfo2.g2.tunipharma.services.DAO.impl.DrugStoreDao
+				.getInstanceof();
 
 		DrugStore d = new DrugStore();
 
@@ -26,41 +28,48 @@ public class TestDao {
 		d.setTelephone("712356954");
 		d.setWeb_site("www.drugstore.com");
 
-		DrugStoreDao.add(d);
+		DrugStoreDao dr = new DrugStoreDao();
+		dr.add(d);
 
-		DrugStore drugstoreFinded = DrugStoreDao.findByID(1);
+		DrugStoreDao drugstoreFinded = new DrugStoreDao();
+		drugstoreFinded.findByID(1);
 		drugstoreFinded.toString();
-
-		drugstoreFinded.setSector("night");
-
-		DrugStoreDao.update(d);
-
-		drugstoreFinded = DrugStoreDao.findByID(1);
-		drugstoreFinded.toString();
-
-		DrugStoreDao.remove(d);
+		/*
+		 * drugstoreFinded.setSector("night");
+		 * 
+		 * DrugStoreDao.update(d);
+		 * 
+		 * drugstoreFinded = DrugStoreDao.findByID(1);
+		 * drugstoreFinded.toString();
+		 * 
+		 * DrugStoreDao.remove(d);
+		 */
 
 		Operator operator = new Operator();
 		operator.setId(1);
+		operator.setDrugstore(d);
 		operator.setFirstname("Salem");
 		operator.setLasname("Belanes");
 		operator.setEmail("belanes_salem@ahoo.fr");
 		operator.setLogin("salem");
 		operator.setPassword("secret");
 
-		OperatorDao.add(operator);
+		OperatorDao ope = new OperatorDao();
+		ope.add(operator);
 
-		Operator operatorFinded = OperatorDao.findByID(1);
-		operatorFinded.toString();
-
-		operatorFinded.setPassword("newSecret");
-
-		OperatorDao.update(operator);
-
-		operatorFinded = OperatorDao.findByID(1);
-		operatorFinded.toString();
-
-		OperatorDao.remove(operator);
+		/*
+		 * 
+		 * Operator operatorFinded = OperatorDao.findByID(1);
+		 * operatorFinded.toString();
+		 * 
+		 * operatorFinded.setPassword("newSecret");
+		 * 
+		 * OperatorDao.update(operator);
+		 * 
+		 * operatorFinded = OperatorDao.findByID(1); operatorFinded.toString();
+		 * 
+		 * OperatorDao.remove(operator);
+		 */
 
 	}
 

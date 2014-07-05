@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MysqlUtilities {
 	private static Connection myConnection;
-	private static String url = "jdbc:mysql://localhost:3306/tunipharma?allowMultiQueries=true";
+	private static String url = "jdbc:mysql://localhost:3306/tunipharma";
 	private static String user = "root";
 	private static String password = "";
 
@@ -14,12 +14,14 @@ public class MysqlUtilities {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			myConnection = DriverManager.getConnection(url, user, password);
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}
 		return myConnection;
 	}
 }
-

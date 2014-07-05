@@ -15,7 +15,7 @@ import com.mysql.jdbc.Statement;
 public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 	private static DrugStoreDao instansof;
 
-	private DrugStoreDao() {
+	public DrugStoreDao() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,8 +53,9 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 					+ drugstore.getTelephone()
 					+ "',"
 					+ "'"
-					+ drugstore.getEmail() + "',"
-
+					+ drugstore.getEmail()
+					+ "',"
+					+ "'"
 					+ drugstore.getWeb_site() + "'"
 
 					+ ")";
@@ -90,8 +91,9 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 					+ drugstore.getTelephone()
 					+ "',"
 					+ "'"
-					+ drugstore.getEmail() + "',"
-
+					+ drugstore.getEmail()
+					+ "',"
+					+ "'"
 					+ drugstore.getWeb_site() + "'"
 
 					+ ")";
@@ -132,6 +134,7 @@ public class DrugStoreDao implements IDaoGenerique<DrugStore> {
 			} else {
 				resultSet.first();
 				drugstore = new DrugStore(resultSet);
+				
 			}
 
 		} catch (SQLException e) {

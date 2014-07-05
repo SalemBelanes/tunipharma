@@ -16,8 +16,8 @@ import com.mysql.jdbc.Statement;
 public class OperatorDao implements IDaoGenerique<Operator> {
 	public static OperatorDao instansof;
 
-	private OperatorDao() {
-		System.out.println("salem");
+	public OperatorDao() {
+
 	}
 
 	private Connection connection;
@@ -26,6 +26,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 		if (connection == null) {
 
 			connection = MysqlUtilities.giveMeConnectionConfigured();
+
 		}
 		return connection;
 
@@ -37,7 +38,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 
 		try {
 			Statement statement = (Statement) connection.createStatement();
-			String sql = "insert into operator (drug_store_id,firstname,lastname,login,password,email) values("
+			String sql = "insert into operator (drug_store_id,firsname,lastname,login,password,email) values("
 					+ "'"
 					+ operator.getDrug_store().getId()
 					+ "',"
@@ -54,9 +55,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 					+ operator.getPassword()
 					+ "',"
 					+ "'"
-					+ operator.getEmail() + "'"
-
-					+ ")";
+					+ operator.getEmail() + "'" + ")";
 			statement.executeUpdate(sql);
 			return true;
 		} catch (SQLException e) {
@@ -148,7 +147,7 @@ public class OperatorDao implements IDaoGenerique<Operator> {
 			ResultSet resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
-				
+
 				Operator operator = new Operator(resultSet);
 				DrugStoreDao drugstordao = DrugStoreDao.getInstanceof();
 				DrugStore drugStore = drugstordao.findByID(resultSet
