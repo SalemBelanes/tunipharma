@@ -16,14 +16,14 @@ public class TestDaoOperator {
 	public static void main(String[] args) {
 
 		addOperators();
-		// updateOperators();
+		updateOperators();
 		/*
 		 * findAllOperators(); removeOperators(33); findAllOperators();
 		 */
 
 	}
 
-	private static void removeOperators(int id) {
+	private static void removeOperators() {
 
 		// decalarate DAO for operator store
 		OperatorDao operatorDao = new OperatorDao();
@@ -75,7 +75,7 @@ public class TestDaoOperator {
 		operator1.setLogin("login.salem");
 		operator1.setPassword("scretSalem");
 		operator1.setEmail("belanes_salem@yahoo.fr");
-		//add drug store to operator
+		// add drug store to operator
 		operator1.setDrugstore(finddrug);
 
 		// declarate operator2
@@ -86,9 +86,8 @@ public class TestDaoOperator {
 		operator2.setLogin("login.ali");
 		operator2.setPassword("scretAli");
 		operator1.setEmail("benSalah_ali@gmail.com");
-		//add drug store to operator
+		// add drug store to operator
 		operator2.setDrugstore(finddrug);
-		
 
 		// decalarate DAO for operator store
 		OperatorDao operatorDao = new OperatorDao();

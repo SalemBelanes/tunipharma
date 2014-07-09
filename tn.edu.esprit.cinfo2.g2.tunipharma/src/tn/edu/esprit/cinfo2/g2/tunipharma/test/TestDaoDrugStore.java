@@ -13,8 +13,8 @@ public class TestDaoDrugStore {
 
 	public static void main(String[] args) {
 
-		// addDrugStores();
-		// updateDrugStores();
+		addDrugStores();
+		 updateDrugStores();
 		findAllDrugStores();
 		removeDrugStores(33);
 		findAllDrugStores();
